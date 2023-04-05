@@ -19,7 +19,37 @@
  *   o "S" (tijera).
  * - Ejemplo. Entrada: [("R","S"), ("S","R"), ("P","S")]. Resultado: "Jugador 2".
  */
+/*P gana a R, R gana a S, S gana a P */
+ const ganador = partida => {
+  const puntuacion = {
+    0:0,
+    1:0,
+  }
 
+   for(let par of partida){
+   if(par.includes('P') && par.includes('R')){
+    puntuacion[par.indexOf('P')]++
+   }
+   if(par.includes('R') && par.includes('S')){
+    puntuacion[par.indexOf('R')]++
+   }
+   if(par.includes('S') && par.includes('P')){
+    puntuacion[par.indexOf('S')]++
+   }
+  }
+
+  if(puntuacion[0] < puntuacion[1]){
+    return 'Jugador 2'
+  }
+  if(puntuacion[0] > puntuacion[1]){
+    return 'Jugador 1'
+  }
+  return 'Empate'
+  }
+  
+
+
+ console.log(ganador([["R","S"], ["S","R"], ["P","S"]]))
 
 /*5-
  * Crea una función que reciba días, horas, minutos y segundos (como enteros)
